@@ -2,6 +2,7 @@
 #define ITEM_H_
 
 #include <string>
+#include <vector>
 
 class item
 {	
@@ -18,6 +19,6 @@ public:
 	std::string GetName();
 	int GetRarity();
 	int GetDropChance();
-	std::vector<item> MakeFromStr(std::string);
+	item MakeItemFromStr(std::string);
 };
 #endif

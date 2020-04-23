@@ -2,6 +2,7 @@
 #define ITEMLIST_H_
 
 #include <vector>
+#include <string>
 
 class item;
 
@@ -13,6 +14,8 @@ public:
 	itemlist();
 	~itemlist();
 	void AddItem(item);
-	void RollItem();	
+	void RollItem();
+	item MakeItemFromStr(std::string line);
+	itemlist InitialiseList(std::vector<std::string>);
 };
 #endif

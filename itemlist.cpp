@@ -25,3 +25,36 @@ void itemlist::RollItem()
 	int roll = rand() % max_roll + 1;
 	std::cout << max_roll;
 }
+
+item itemlist::MakeItemFromStr(std::string line)
+{
+	item NewItem;
+	std::string value;
+	for (int i = 0; i <= line.length(); i++)
+	{
+		int j = 0;
+		if (line[i] != 59 && i < line.length())
+			value.push_back(line[i]);
+		else
+		{
+			std::cout << value << std::endl;
+			if (j == 0)
+				NewItem.SetName(value);
+			if (j == 1)
+				NewItem.SetRarity(std::stoi(value));
+			if (j == 2)
+				NewItem.SetDropChance(std::stoi(value));
+			j++;
+			value.clear();
+		}
+	}
+	return NewItem;
+}
+
+itemlist InitialiseList(std::vector<std::string> File)
+{
+	itemlist NewList;
+	for (int i = 0; i <= File.size(); i++)
+		NewList.AddItem(NewList.MakeItemFromStr(File[i]));
+	return NewList;
+}
